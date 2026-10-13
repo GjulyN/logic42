@@ -8,3 +8,4 @@ analyzer:
   exclude:
     - lib/app/localization/generated/**
     - build/**
+    - android/**
