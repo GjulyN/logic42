@@ -11,7 +11,8 @@ class WorldDefinition {
 }
 
 const worlds = [
-  WorldDefinition(id: 'basic_patterns', titleKey: 'worldBasicPatterns', order: 1),
+  WorldDefinition(
+      id: 'basic_patterns', titleKey: 'worldBasicPatterns', order: 1),
   WorldDefinition(id: 'modular_rules', titleKey: 'worldModularRules', order: 2),
   WorldDefinition(id: 'number_groups', titleKey: 'worldNumberGroups', order: 3),
   WorldDefinition(id: 'prime_logic', titleKey: 'worldPrimeLogic', order: 4),

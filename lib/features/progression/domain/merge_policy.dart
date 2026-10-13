@@ -37,12 +37,10 @@ PuzzleProgressRecord mergeProgress(
   }();
   final attempts =
       local.attempts > remote.attempts ? local.attempts : remote.attempts;
-  final hints = local.hintsUsed < remote.hintsUsed
-      ? local.hintsUsed
-      : remote.hintsUsed;
-  final xp = local.xpAwarded > remote.xpAwarded
-      ? local.xpAwarded
-      : remote.xpAwarded;
+  final hints =
+      local.hintsUsed < remote.hintsUsed ? local.hintsUsed : remote.hintsUsed;
+  final xp =
+      local.xpAwarded > remote.xpAwarded ? local.xpAwarded : remote.xpAwarded;
   return PuzzleProgressRecord(
     puzzleId: local.puzzleId,
     completed: completed,

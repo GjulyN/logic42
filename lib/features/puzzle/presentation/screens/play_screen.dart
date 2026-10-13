@@ -7,6 +7,7 @@ import '../../../../app/localization/generated/app_localizations.dart';
 import '../../../../app/providers.dart';
 import '../../../../core/analytics/analytics_events.dart';
 import '../../domain/rules/logic_rule.dart';
+import '../../data/puzzle_catalog.dart';
 import '../board.dart';
 import '../play_controller.dart';
 
@@ -27,9 +28,16 @@ class _PlayScreenState extends ConsumerState<PlayScreen>
     WidgetsBinding.instance.addObserver(this);
     WidgetsBinding.instance.addPostFrameCallback((_) {
       final catalog = ref.read(catalogProvider);
-      final puzzle = catalog.byId(widget.puzzleId);
+      final entry = _findPuzzle(catalog, widget.puzzleId);
+      if (entry == null) {
+        context.go('/home');
+        return;
+      }
+      final puzzle = entry.definition;
       ref.read(playProvider.notifier).start(puzzle, ref.read(clockProvider));
-      ref.read(analyticsProvider).track(AnalyticsEvents.puzzleStarted(puzzle.id));
+      ref
+          .read(analyticsProvider)
+          .track(AnalyticsEvents.puzzleStarted(puzzle.id));
     });
   }
 
@@ -146,17 +154,18 @@ class _PlayScreenState extends ConsumerState<PlayScreen>
                             attempts: state.attempts,
                             gaveUp: true,
                           );
-                      await ref
-                          .read(analyticsProvider)
-                          .track(AnalyticsEvents.puzzleAbandoned(state.puzzle.id));
+                      await ref.read(analyticsProvider).track(
+                          AnalyticsEvents.puzzleAbandoned(state.puzzle.id));
                     },
                     child: Text(l10n.giveUp),
                   ),
                 ],
               ),
             ],
-            if (state.phase == PlayPhase.correct) _result(context, l10n, rule, false),
-            if (state.phase == PlayPhase.givenUp) _result(context, l10n, rule, true),
+            if (state.phase == PlayPhase.correct)
+              _result(context, l10n, rule, false),
+            if (state.phase == PlayPhase.givenUp)
+              _result(context, l10n, rule, true),
           ],
         ),
       ),
@@ -170,7 +179,8 @@ class _PlayScreenState extends ConsumerState<PlayScreen>
     bool givenUp,
   ) {
     final state = ref.read(playProvider)!;
-    final explanation = rule.explanation(state.puzzle.targetRow.operands, state.puzzle.answer);
+    final explanation =
+        rule.explanation(state.puzzle.targetRow.operands, state.puzzle.answer);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -193,7 +203,6 @@ class _PlayScreenState extends ConsumerState<PlayScreen>
   }
 
   void _openHint() {
-    final l10n = AppLocalizations.of(context);
     final state = ref.read(playProvider)!;
     ref.read(playProvider.notifier).useHint();
     final level = ref.read(playProvider)!.hintsUsed;
@@ -239,5 +248,12 @@ class _PlayScreenState extends ConsumerState<PlayScreen>
     ).whenComplete(() {
       ref.read(playProvider.notifier).resume(ref.read(clockProvider));
     });
+  }
+
+  static CatalogPuzzle? _findPuzzle(PuzzleCatalog catalog, String id) {
+    for (final entry in catalog.puzzles) {
+      if (entry.definition.id == id) return entry;
+    }
+    return null;
   }
 }

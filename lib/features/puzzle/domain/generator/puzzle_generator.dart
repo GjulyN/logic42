@@ -31,7 +31,8 @@ class PuzzleGenerator {
     int? difficultyHint,
   }) {
     final rule = registry.byId(ruleId);
-    final rng = SeededRng(_mix(seed, ruleId, generatorVersion, difficultyHint ?? 0));
+    final rng =
+        SeededRng(_mix(seed, ruleId, generatorVersion, difficultyHint ?? 0));
     final breakdown = difficulty.scoreRule(rule);
     for (var attempt = 0; attempt < maxAttempts; attempt++) {
       final rows = <PuzzleRow>[];

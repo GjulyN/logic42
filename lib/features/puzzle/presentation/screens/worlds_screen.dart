@@ -20,7 +20,8 @@ class WorldsScreen extends ConsumerWidget {
           for (final world in worlds)
             ListTile(
               title: Text(_title(l10n, world.id)),
-              subtitle: Text(player.worldUnlocked(world.id) ? l10n.play : l10n.locked),
+              subtitle: Text(
+                  player.worldUnlocked(world.id) ? l10n.play : l10n.locked),
               enabled: player.worldUnlocked(world.id),
               onTap: player.worldUnlocked(world.id)
                   ? () => context.push('/worlds/${world.id}')

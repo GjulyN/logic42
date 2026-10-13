@@ -56,9 +56,8 @@ class PuzzleBoard extends StatelessWidget {
                                 ? rows[r].result
                                 : (revealAnswer ? puzzle.answer : guess)),
                         editable: r == 5 && c == 6,
-                        related: relatedMask != null &&
-                            c < 6 &&
-                            relatedMask![c],
+                        related:
+                            relatedMask != null && c < 6 && relatedMask![c],
                       ),
                     ),
                 ],
@@ -86,7 +85,9 @@ class PuzzleBoard extends StatelessWidget {
     if (feedback == true && editable) bg = Colors.green.shade700;
     if (feedback == false && editable) bg = Colors.red.shade800;
     if (highContrast) {
-      bg = editable ? Colors.black : (isResult ? Colors.grey.shade800 : cs.surface);
+      bg = editable
+          ? Colors.black
+          : (isResult ? Colors.grey.shade800 : cs.surface);
     }
     final border = Border.all(
       color: selected && editable ? AppColors.accent42 : cs.outline,

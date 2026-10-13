@@ -36,7 +36,10 @@ void main() {
   test('alternating sum can be negative before wrap', () {
     final rule = registry.byId('alternating_sum');
     const ops = [1, 42, 1, 42, 1, 42];
-    expect(rule.evaluate(ops), 5);
+    expect(rule.evaluate(ops), mod42(-123));
+    expect(rule.evaluate(ops), 3);
+    const positive = [42, 1, 42, 1, 42, 1];
+    expect(rule.evaluate(positive), mod42(123));
   });
 
   test('modular sum wrap', () {

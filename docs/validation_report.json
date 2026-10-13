@@ -1,0 +1,26 @@
+{
+  "puzzleCount": 14,
+  "ruleDistribution": {
+    "range": 1,
+    "min_plus_max": 1,
+    "median_pair_sum": 1,
+    "digit_sum": 1,
+    "modular_sum": 1,
+    "alternating_sum": 1,
+    "odd_even_value_diff": 1,
+    "odd_even_position_diff": 1,
+    "count_weighted_parity": 1,
+    "count_above_21": 1,
+    "prime_nonprime_diff": 1,
+    "forty_two_symmetry": 1,
+    "meta_digit_then_range": 1,
+    "meta_prime_count_times_sum": 1
+  },
+  "difficultyDistribution": {
+    "Hard": 6,
+    "Expert": 8
+  },
+  "duplicateCount": 0,
+  "invalidCount": 0,
+  "ambiguousCount": 0
+}

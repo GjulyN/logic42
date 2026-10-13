@@ -17,11 +17,13 @@ void main() {
       MaterialApp(
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
-        home: PuzzleBoard(
-          puzzle: puzzle,
-          guess: null,
-          selected: true,
-          onSelectEditable: () {},
+        home: Scaffold(
+          body: PuzzleBoard(
+            puzzle: puzzle,
+            guess: null,
+            selected: true,
+            onSelectEditable: () {},
+          ),
         ),
       ),
     );

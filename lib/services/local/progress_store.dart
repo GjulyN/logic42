@@ -52,7 +52,8 @@ class PlayerSnapshot {
         'streak': {
           'current': streak.current,
           'longest': streak.longest,
-          'lastCompletionUtcDay': streak.lastCompletionUtcDay?.toIso8601String(),
+          'lastCompletionUtcDay':
+              streak.lastCompletionUtcDay?.toIso8601String(),
           'milestone3': streak.milestone3,
           'milestone7': streak.milestone7,
           'milestone30': streak.milestone30,
@@ -78,7 +79,8 @@ class PlayerSnapshot {
   static PlayerSnapshot fromJson(Map<String, dynamic> json) {
     final streakMap = Map<String, dynamic>.from(json['streak'] as Map? ?? {});
     final last = streakMap['lastCompletionUtcDay'] as String?;
-    final progressRaw = Map<String, dynamic>.from(json['progress'] as Map? ?? {});
+    final progressRaw =
+        Map<String, dynamic>.from(json['progress'] as Map? ?? {});
     return PlayerSnapshot(
       schemaVersion: json['schemaVersion'] as int? ?? 1,
       xp: json['xp'] as int? ?? 0,
@@ -143,7 +145,8 @@ class ProgressStore {
 
   PlayerSnapshot migrate(PlayerSnapshot snap) {
     if (snap.schemaVersion > currentSchema) {
-      throw StateError('Progress schema ${snap.schemaVersion} is newer than $currentSchema');
+      throw StateError(
+          'Progress schema ${snap.schemaVersion} is newer than $currentSchema');
     }
     snap.schemaVersion = currentSchema;
     return snap;
@@ -151,6 +154,7 @@ class ProgressStore {
 
   Future<void> save(PlayerSnapshot snapshot) async {
     final file = await _file();
-    await file.writeAsString(const JsonEncoder.withIndent('  ').convert(snapshot.toJson()));
+    await file.writeAsString(
+        const JsonEncoder.withIndent('  ').convert(snapshot.toJson()));
   }
 }

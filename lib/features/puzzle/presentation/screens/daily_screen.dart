@@ -14,7 +14,8 @@ class DailyScreen extends ConsumerWidget {
     final l10n = AppLocalizations.of(context);
     final puzzle = dailyPuzzle(ref);
     final dateId = dailyPuzzleId(ref.read(clockProvider).nowUtc());
-    final rankedUsed = ref.watch(playerProvider).dailyRankedDates.contains(dateId);
+    final rankedUsed =
+        ref.watch(playerProvider).dailyRankedDates.contains(dateId);
     return Scaffold(
       appBar: AppBar(title: Text(l10n.daily)),
       body: Padding(
@@ -27,7 +28,9 @@ class DailyScreen extends ConsumerWidget {
               onPressed: () async {
                 ref.read(catalogProvider).registerRuntime(puzzle);
                 if (!rankedUsed) {
-                  await ref.read(playerProvider.notifier).markDailyRanked(dateId);
+                  await ref
+                      .read(playerProvider.notifier)
+                      .markDailyRanked(dateId);
                 }
                 if (context.mounted) context.push('/play/${puzzle.id}');
               },

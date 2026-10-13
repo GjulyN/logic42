@@ -39,7 +39,8 @@ class ModularSumRule extends LogicRule {
 
   @override
   HintStages hints() => const HintStages(
-        visualFocus: 'Look at every number in the row together, not just a pair.',
+        visualFocus:
+            'Look at every number in the row together, not just a pair.',
         ruleFamily: 'The output is a wrapped total of the six values.',
         formulaConcept: 'g = mod42(a + b + c + d + e + f).',
       );
@@ -186,8 +187,10 @@ class OddEvenPositionDifferenceRule extends LogicRule {
 
   @override
   HintStages hints() => const HintStages(
-        visualFocus: 'Look at every other cell: first, third, and fifth versus the rest.',
-        ruleFamily: 'The grouping follows positions, not whether a number is odd.',
+        visualFocus:
+            'Look at every other cell: first, third, and fifth versus the rest.',
+        ruleFamily:
+            'The grouping follows positions, not whether a number is odd.',
         formulaConcept: 'g = mod42(|(a + c + e) − (b + d + f)|).',
       );
 }
@@ -315,7 +318,8 @@ class MedianPairSumRule extends LogicRule {
 
   @override
   HintStages hints() => const HintStages(
-        visualFocus: 'Imagine the six numbers lined up from smallest to largest.',
+        visualFocus:
+            'Imagine the six numbers lined up from smallest to largest.',
         ruleFamily: 'The two central values after sorting are combined.',
         formulaConcept: 'Sort x1≤…≤x6, then g = mod42(x3 + x4).',
       );
@@ -543,7 +547,8 @@ class FortyTwoSymmetryRule extends LogicRule {
 
   @override
   HintStages hints() => const HintStages(
-        visualFocus: 'After sorting, look at mirrored pairs from the ends inward.',
+        visualFocus:
+            'After sorting, look at mirrored pairs from the ends inward.',
         ruleFamily: 'Compare mirrored pairs around 42.',
         formulaConcept:
             'Sort, then g = mod42(|x1+x6−42| + |x2+x5−42| + |x3+x4−42|).',
@@ -591,7 +596,8 @@ class DigitThenRangeMetaRule extends LogicRule {
 
   @override
   HintStages hints() => const HintStages(
-        visualFocus: 'Transform each cell first, then look at the new six numbers.',
+        visualFocus:
+            'Transform each cell first, then look at the new six numbers.',
         ruleFamily: 'Two named steps: digit sums, then a range.',
         formulaConcept: 'g = mod42(max(digitSums) − min(digitSums)).',
       );

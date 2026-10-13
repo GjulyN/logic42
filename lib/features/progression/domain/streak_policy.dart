@@ -44,8 +44,8 @@ class StreakPolicy {
     required DateTime nowUtc,
     DateTime? claimedCompletionUtc,
   }) {
-    final nowDay = utcDay(nowUtc);
-    var claim = claimedCompletionUtc == null ? nowUtc : claimedCompletionUtc.toUtc();
+    var claim =
+        claimedCompletionUtc == null ? nowUtc : claimedCompletionUtc.toUtc();
     if (claim.isAfter(nowUtc.add(const Duration(hours: 2)))) {
       claim = nowUtc;
     }

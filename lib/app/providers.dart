@@ -18,20 +18,23 @@ import '../services/firebase/firebase_ports.dart';
 import '../services/local/progress_store.dart';
 import 'config/app_flavor.dart';
 
-final appConfigProvider = Provider<AppConfig>((ref) => AppConfig.fromEnvironment());
+final appConfigProvider =
+    Provider<AppConfig>((ref) => AppConfig.fromEnvironment());
 
 final clockProvider = Provider<Clock>((ref) => const SystemClock());
 
-final analyticsProvider = Provider<AnalyticsPort>((ref) => const NoOpAnalytics());
+final analyticsProvider =
+    Provider<AnalyticsPort>((ref) => const NoOpAnalytics());
 
 final crashProvider = Provider<CrashPort>((ref) => const NoOpCrash());
 
 final authProvider = Provider<AuthPort>((ref) => LocalAuthAdapter());
 
-final storeServiceProvider = Provider<StoreService>((ref) => const DisabledStoreService());
+final storeServiceProvider =
+    Provider<StoreService>((ref) => const DisabledStoreService());
 
-final entitlementProvider =
-    Provider<EntitlementRepository>((ref) => const OfflineEntitlementRepository());
+final entitlementProvider = Provider<EntitlementRepository>(
+    (ref) => const OfflineEntitlementRepository());
 
 final ruleRegistryProvider = Provider<RuleRegistry>((ref) => RuleRegistry());
 
@@ -90,7 +93,8 @@ class PlayerController extends Notifier<PlayerSnapshot> {
       gaveUp: gaveUp,
       alreadyCompleted: existing.completed && existing.xpAwarded > 0,
     );
-    final stars = gaveUp ? 0 : starsFor(hintsUsed: hintsUsed, attempts: attempts);
+    final stars =
+        gaveUp ? 0 : starsFor(hintsUsed: hintsUsed, attempts: attempts);
     final merged = PuzzleProgressRecord(
       puzzleId: puzzle.id,
       completed: existing.completed || !gaveUp,
@@ -106,7 +110,8 @@ class PlayerController extends Notifier<PlayerSnapshot> {
       hintsUsed: existing.completed
           ? existing.hintsUsed
           : (existing.hintsUsed > hintsUsed ? existing.hintsUsed : hintsUsed),
-      xpAwarded: existing.xpAwarded + (breakdown.awarded ? breakdown.totalXp : 0),
+      xpAwarded:
+          existing.xpAwarded + (breakdown.awarded ? breakdown.totalXp : 0),
     );
     state.progress[puzzle.id] = mergeProgress(
       existing.completed ? existing : merged,
@@ -150,8 +155,7 @@ class PlayerController extends Notifier<PlayerSnapshot> {
     final order = worlds.firstWhere((w) => w.id == worldId).order;
     if (order <= 1) return true;
     final prev = worlds.firstWhere((w) => w.order == order - 1);
-    final prevPuzzles =
-        ref.read(catalogProvider).forWorld(prev.id);
+    final prevPuzzles = ref.read(catalogProvider).forWorld(prev.id);
     if (prevPuzzles.isEmpty) return true;
     return prevPuzzles.every((p) => recordFor(p.definition.id).completed);
   }

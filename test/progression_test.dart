@@ -43,7 +43,7 @@ void main() {
   });
 
   test('streak utc days', () {
-    const policy = StreakPolicy();
+    final policy = StreakPolicy();
     var s = const StreakState(current: 0, longest: 0);
     s = policy.onCompletion(
       previous: s,

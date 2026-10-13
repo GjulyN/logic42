@@ -163,7 +163,8 @@ class PlayController extends Notifier<PlayState?> {
   LogicRule rule(RuleRegistry registry) => registry.byId(state!.puzzle.ruleId);
 }
 
-final playProvider = NotifierProvider<PlayController, PlayState?>(PlayController.new);
+final playProvider =
+    NotifierProvider<PlayController, PlayState?>(PlayController.new);
 
 List<bool> visualMask(LogicRule rule) {
   switch (rule.ruleId) {

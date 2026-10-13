@@ -32,7 +32,9 @@ class LevelsScreen extends ConsumerWidget {
                   : (locked ? l10n.locked : l10n.play),
             ),
             enabled: !locked,
-            onTap: locked ? null : () => context.push('/play/${item.definition.id}'),
+            onTap: locked
+                ? null
+                : () => context.push('/play/${item.definition.id}'),
           );
         },
       ),

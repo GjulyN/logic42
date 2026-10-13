@@ -20,7 +20,8 @@ class HomeScreen extends ConsumerWidget {
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
-          Text(l10n.level(level), style: Theme.of(context).textTheme.titleLarge),
+          Text(l10n.level(level),
+              style: Theme.of(context).textTheme.titleLarge),
           Text('${l10n.xp}: ${player.xp} / $next'),
           Text('${l10n.streak}: ${player.streak.current}'),
           const SizedBox(height: 16),

@@ -18,7 +18,8 @@ ThemeData buildLightTheme() {
     ),
   );
   return base.copyWith(
-    appBarTheme: const AppBarTheme(centerTitle: true, scrolledUnderElevation: 0),
+    appBarTheme:
+        const AppBarTheme(centerTitle: true, scrolledUnderElevation: 0),
   );
 }
 
@@ -33,6 +34,7 @@ ThemeData buildDarkTheme() {
     ),
   );
   return base.copyWith(
-    appBarTheme: const AppBarTheme(centerTitle: true, scrolledUnderElevation: 0),
+    appBarTheme:
+        const AppBarTheme(centerTitle: true, scrolledUnderElevation: 0),
   );
 }

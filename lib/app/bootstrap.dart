@@ -10,7 +10,11 @@ Future<void> bootstrapApp(ProviderContainer container) async {
   try {
     await catalog.loadAsset('assets/puzzles/seed_pack_v1.json');
   } catch (_) {
-    catalog.loadFromSeeds(curatedSeeds);
+    try {
+      catalog.loadFromSeeds(curatedSeeds);
+    } catch (_) {
+      catalog.loadFromSeeds(const <SeedSpec>[]);
+    }
   }
   await container.read(playerProvider.notifier).hydrate();
   await container.read(settingsProvider.notifier).hydrate();

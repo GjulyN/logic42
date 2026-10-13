@@ -110,7 +110,8 @@ class PuzzleCatalog {
         );
       }
       loaded.add(
-        CatalogPuzzle(worldId: spec.worldId, index: spec.index, definition: def),
+        CatalogPuzzle(
+            worldId: spec.worldId, index: spec.index, definition: def),
       );
     }
     _puzzles = List.unmodifiable(loaded);
@@ -134,17 +135,53 @@ class SeedSpec {
 /// High-quality seed coordinates; JSON is the shipping format.
 const curatedSeeds = <SeedSpec>[
   SeedSpec(seed: 101, ruleId: 'range', worldId: 'basic_patterns', index: 1),
-  SeedSpec(seed: 102, ruleId: 'min_plus_max', worldId: 'basic_patterns', index: 2),
-  SeedSpec(seed: 103, ruleId: 'median_pair_sum', worldId: 'basic_patterns', index: 3),
+  SeedSpec(
+      seed: 102, ruleId: 'min_plus_max', worldId: 'basic_patterns', index: 2),
+  SeedSpec(
+      seed: 103,
+      ruleId: 'median_pair_sum',
+      worldId: 'basic_patterns',
+      index: 3),
   SeedSpec(seed: 104, ruleId: 'digit_sum', worldId: 'basic_patterns', index: 4),
-  SeedSpec(seed: 201, ruleId: 'modular_sum', worldId: 'modular_rules', index: 1),
-  SeedSpec(seed: 202, ruleId: 'alternating_sum', worldId: 'modular_rules', index: 2),
-  SeedSpec(seed: 301, ruleId: 'odd_even_value_diff', worldId: 'number_groups', index: 1),
-  SeedSpec(seed: 302, ruleId: 'odd_even_position_diff', worldId: 'number_groups', index: 2),
-  SeedSpec(seed: 303, ruleId: 'count_weighted_parity', worldId: 'number_groups', index: 3),
-  SeedSpec(seed: 304, ruleId: 'count_above_21', worldId: 'number_groups', index: 4),
-  SeedSpec(seed: 401, ruleId: 'prime_nonprime_diff', worldId: 'prime_logic', index: 1),
-  SeedSpec(seed: 501, ruleId: 'forty_two_symmetry', worldId: 'forty_two_symmetry', index: 1),
-  SeedSpec(seed: 601, ruleId: 'meta_digit_then_range', worldId: 'meta_rules', index: 1),
-  SeedSpec(seed: 602, ruleId: 'meta_prime_count_times_sum', worldId: 'meta_rules', index: 2),
+  SeedSpec(
+      seed: 201, ruleId: 'modular_sum', worldId: 'modular_rules', index: 1),
+  SeedSpec(
+      seed: 202, ruleId: 'alternating_sum', worldId: 'modular_rules', index: 2),
+  SeedSpec(
+      seed: 301,
+      ruleId: 'odd_even_value_diff',
+      worldId: 'number_groups',
+      index: 1),
+  SeedSpec(
+      seed: 302,
+      ruleId: 'odd_even_position_diff',
+      worldId: 'number_groups',
+      index: 2),
+  SeedSpec(
+      seed: 303,
+      ruleId: 'count_weighted_parity',
+      worldId: 'number_groups',
+      index: 3),
+  SeedSpec(
+      seed: 304, ruleId: 'count_above_21', worldId: 'number_groups', index: 4),
+  SeedSpec(
+      seed: 401,
+      ruleId: 'prime_nonprime_diff',
+      worldId: 'prime_logic',
+      index: 1),
+  SeedSpec(
+      seed: 501,
+      ruleId: 'forty_two_symmetry',
+      worldId: 'forty_two_symmetry',
+      index: 1),
+  SeedSpec(
+      seed: 601,
+      ruleId: 'meta_digit_then_range',
+      worldId: 'meta_rules',
+      index: 1),
+  SeedSpec(
+      seed: 602,
+      ruleId: 'meta_prime_count_times_sum',
+      worldId: 'meta_rules',
+      index: 2),
 ];

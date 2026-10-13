@@ -19,7 +19,8 @@ class StatsScreen extends ConsumerWidget {
         children: [
           ListTile(title: Text(l10n.xp), subtitle: Text('${p.xp}')),
           ListTile(title: Text(l10n.level(levelForXp(p.xp)))),
-          ListTile(title: Text(l10n.streak), subtitle: Text('${p.streak.current}')),
+          ListTile(
+              title: Text(l10n.streak), subtitle: Text('${p.streak.current}')),
           ListTile(title: Text(l10n.classic), subtitle: Text('$solved')),
         ],
       ),

@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
@@ -39,13 +38,16 @@ final routerProvider = Provider<GoRouter>((ref) {
       GoRoute(path: '/speed', builder: (c, s) => const SpeedScreen()),
       GoRoute(path: '/discovery', builder: (c, s) => const DiscoveryScreen()),
       GoRoute(path: '/stats', builder: (c, s) => const StatsScreen()),
-      GoRoute(path: '/achievements', builder: (c, s) => const AchievementsScreen()),
+      GoRoute(
+          path: '/achievements', builder: (c, s) => const AchievementsScreen()),
       GoRoute(path: '/settings', builder: (c, s) => const SettingsScreen()),
       GoRoute(path: '/profile', builder: (c, s) => const ProfileScreen()),
       GoRoute(
         path: '/premium',
         redirect: (c, s) {
-          final enabled = ProviderScope.containerOf(c).read(appConfigProvider).monetizationEnabled;
+          final enabled = ProviderScope.containerOf(c)
+              .read(appConfigProvider)
+              .monetizationEnabled;
           if (!enabled) return '/home';
           return null;
         },
